@@ -1,0 +1,59 @@
+[package]
+name = "kira-vrs"
+description = "Native Rust implementation of the GA4GH Variation Representation Specification (VRS 2.1): typed model, canonical digest serialization, computed identifiers and normalization"
+readme = "../../README.md"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[package.metadata.vrs]
+# The upstream GA4GH VRS specification revision this crate implements.
+# Reproduce with: scripts/sync-upstream.sh (see docs/spec-revision.md).
+spec_version = "2.1.0"
+spec_tag = "2.1.0"
+spec_repository = "https://github.com/ga4gh/vrs"
+spec_revision = "cf33bfa7618011087655d5a5898e518c9d96bcdb"
+spec_date = "2026-09-01"
+gkm_core_version = "1.2.0"
+gkm_core_repository = "https://github.com/ga4gh/gkm-core"
+gkm_core_revision = "91abbb7d0f8f05a183303853c121abd76b8b765a"
+keywords = [
+    "bioinformatics",
+    "genomics",
+    "dna"
+]
+categories = [
+    "science",
+    "science::bioinformatics",
+    "science::bioinformatics::sequence-analysis",
+    "algorithms"
+]
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+sha2 = { workspace = true }
+
+[dev-dependencies]
+criterion = { workspace = true }
+proptest = { workspace = true }
+
+[lints]
+workspace = true
+
+[[bench]]
+name = "vrs"
+harness = false
+
+# Single-threaded custom harness: a global counting allocator would otherwise count the
+# allocations of concurrently running tests.
+[[test]]
+name = "allocations"
+harness = false

@@ -1,0 +1,58 @@
+[workspace]
+resolver = "3"
+members = ["crates/kira-vrs", "crates/kira-vrs-validation"]
+exclude = ["fuzz"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+authors = ["Andrei Riaskóv <code@riaskov.com>"]
+repository = "https://github.com/ARyaskov/kira-vrs"
+homepage = "https://github.com/ARyaskov/kira-vrs"
+keywords = ["ga4gh", "vrs", "genomics", "bioinformatics", "variation"]
+categories = ["science", "encoding", "data-structures"]
+
+[workspace.dependencies]
+kira-vrs = { path = "crates/kira-vrs", version = "0.1.0" }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+thiserror = "2.0.20"
+sha2 = "0.11.0"
+criterion = { version = "0.8.2", default-features = false, features = ["html_reports"] }
+proptest = "1.11.0"
+jsonschema = { version = "0.53.0", default-features = false }
+
+[workspace.lints.rust]
+# `deny` (not `forbid`) so that the allocation-counting test can opt in with a documented
+# `allow`; the library crate itself uses `#![forbid(unsafe_code)]`.
+unsafe_code = "deny"
+missing_docs = "warn"
+unreachable_pub = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+# pedantic opt-outs that fight readability in a numeric / bioinformatics codebase
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+cast_possible_truncation = "allow"
+cast_possible_wrap = "allow"
+cast_sign_loss = "allow"
+struct_excessive_bools = "allow"
+too_many_lines = "allow"
+similar_names = "allow"
+doc_markdown = "allow"
+wildcard_imports = "allow"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[profile.bench]
+inherits = "release"
+debug = true

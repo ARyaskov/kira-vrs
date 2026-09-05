@@ -1,0 +1,9 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "https://w3id.org/ga4gh/schema/gkm-core/1.2.0/json/date",
+   "title": "date",
+   "type": "string",
+   "maturity": "trial use",
+   "description": "A string is valid against this format if it represents a date in the following format: YYYY-MM-DD.",
+   "format": "date"
+}

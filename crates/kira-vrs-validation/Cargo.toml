@@ -1,0 +1,32 @@
+[package]
+name = "kira-vrs-validation"
+description = "Compatibility harness running the official GA4GH VRS validation vectors, examples and JSON Schemas against kira-vrs"
+publish = false
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+keywords = [
+    "bioinformatics",
+    "genomics",
+    "dna"
+]
+categories = [
+    "science",
+    "science::bioinformatics",
+    "science::bioinformatics::sequence-analysis",
+    "algorithms"
+]
+
+[dependencies]
+kira-vrs = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+jsonschema = { workspace = true }
+
+[lints]
+workspace = true

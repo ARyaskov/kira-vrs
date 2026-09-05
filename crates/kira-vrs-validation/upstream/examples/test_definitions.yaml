@@ -1,0 +1,53 @@
+tests:
+  - test_file: simple_breakpoint.yaml
+    description: An adjacency between two sequence locations.
+    image: ../../docs/images/ex_simple_breakpoint.png
+    schema: vrs
+    definition: Adjacency
+  - test_file: revcomp_breakpoint.yaml
+    description: An adjacency between two sequence locations, the 2nd of which is in reverse orientation.
+    image: ../../docs/images/ex_revcomp_breakpoint.png
+    schema: vrs
+    definition: Adjacency
+  - test_file: terminal_breakend.yaml
+    description: An adjacency with only the starting sequence location. defining the break at which the adjacency ends or terminates.
+    image: ../../docs/images/ex_terminal_breakend.png
+    schema: vrs
+    definition: Terminus
+  - test_file: sequence_homology.yaml
+    description: An adjacency in which the two sequence locations have a homologous overlapping adjoined sequences.
+    image: ../../docs/images/ex_sequence_homology.png
+    schema: vrs
+    definition: Adjacency
+  - test_file: precise_linker.yaml
+    description: An adjacency with a literal sequence linking the two sequence locations that make up the adjoined sequences.
+    image: ../../docs/images/ex_precise_linker.png
+    schema: vrs
+    definition: Adjacency
+  - test_file: ambiguous_linker.yaml
+    description: An adjacency with a length expression linking the two sequence locations that make up the adjoined sequences.
+    image: ../../docs/images/ex_ambiguous_linker.png
+    schema: vrs
+    definition: Adjacency
+  - test_file: sv_derivative_molecule.yaml
+    description: A Derivative Molecule of 5 members. First a 5' terminus, then an adjacency with a literal sequence linker followed by an SNV (Allele), followed by a simple breakpoint adjacency and ending with a 3' terminus that ends with the 1st sequence in derivative molecule.
+    image: ../../docs/images/ex_sv_haplotype.png
+    schema: vrs
+    definition: DerivativeMolecule
+  - test_file: simple_haplotype.yaml
+    description: A haplotype of two alleles on a shared chromosome reference sequence.
+    schema: vrs
+    definition: CisPhasedBlock
+  - test_file: SPDI_contraction.yaml
+    description: A simple RLE contraction from SPDI representation
+    schema: vrs
+    definition: Allele
+  - test_file: SPDI_expansion.yaml
+    description: A simple RLE expansion from SPDI representation
+    schema: vrs
+    definition: Allele
+  - test_file: invalid_adjacency.yaml
+    description: An adjacency with an adjoinedSequence incorrectly containing both a start and end
+    schema: vrs
+    definition: Adjacency
+    shouldValidationFail: true
